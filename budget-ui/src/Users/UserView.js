@@ -6,6 +6,8 @@ import '../index.css'
 
 import DeleteUser from './DeleteUser'
 import UpdateUser from './UpdateUser'
+import ExpenseView from '../Expense/ExpenseView'
+import CreateExpense from '../Expense/CreateExpense'
 
 export default class extends Component {
     userQuery = gql`
@@ -27,8 +29,8 @@ export default class extends Component {
                     if (error) return <p>Error :(</p>;
 
                     return data.users.map(({id, name, email, password}) => (
-                        <Paper key={id}>
-                            <p>{`Name: ${name}`}</p>
+                        <Paper key={id} elevation={20}>
+                            <h4>{`Name: ${name}`}</h4>
                             <p>{`EMAIL: ${email}`}</p>
                             <p>{`PASSWORD: ${password}`}</p>
                             <UpdateUser id={id}
@@ -37,6 +39,8 @@ export default class extends Component {
                                         password={password}
                             />
                             <DeleteUser id={id}/>
+                            <CreateExpense id={id}/>
+                            <ExpenseView id={id}/>
                         </Paper>
 
                     ));
@@ -47,4 +51,3 @@ export default class extends Component {
 }
 
 
-///////////////////////////////////////////// code above works

@@ -1,22 +1,24 @@
-
-
 type User {
-  id: ID! @unique
-  name: String!
-  email: String! @unique
-  password: String
-    expenses: [Expense!]!
+    id: ID! @unique
+    name: String!
+    email: String! @unique
+    password: String
+
+    expenses: [Expense!]! @relation(name: "Budget")
 }
 
 type Category {
-  id: ID! @unique
-  category_name: String! @unique
+    id: ID! @unique
+    category_name: String! @unique
 }
 
 type Expense {
-  id: ID! @unique
-  exp_name: String
-  exp_amt: String
-  exp_created: String
-  exp_category: String
+    id: ID! @unique
+    exp_name: String
+    exp_amt: String
+    exp_created: String
+    exp_category: String
+
+    User: User @relation(name: "Budget")
+
 }

@@ -3,6 +3,7 @@ import {Mutation} from "react-apollo";
 import gql from "graphql-tag";
 import Button from '@material-ui/core/Button';
 import '../index.css'
+import Paper from '@material-ui/core/Paper';
 
 
 export default class extends Component {
@@ -27,27 +28,31 @@ export default class extends Component {
             <Mutation mutation={this.createUserMutation}>
                 {(createUser, {data}) => (
                     <div>
-                        <form onSubmit={event => {
-                            event.preventDefault();
-                            createUser({
-                                variables: {
-                                    name: this.state.name,
-                                    email: this.state.email,
-                                    password: this.state.password
-                                }
-                            });
-                            window.location.reload(true)
-                        }}>
-                            <input type="text" placeholder="Name" required
-                                   onChange={event => this.setState({name: event.target.value})}/>
-                            <input type="text" placeholder="Email" required
-                                   onChange={event => this.setState({email: event.target.value})}/>
-                            <input type="text" placeholder="Password" required
-                                   onChange={event => this.setState({password: event.target.value})}/>
-                            <Button className="submitbutton" variant="raised" color="primary" type="submit">
-                                Submit
-                            </Button>
-                        </form>
+                        <Paper elevation={20}>
+                            <p>Create User</p>
+                            <form onSubmit={event => {
+                                event.preventDefault();
+                                createUser({
+                                    variables: {
+                                        name: this.state.name,
+                                        email: this.state.email,
+                                        password: this.state.password
+                                    }
+                                });
+                                window.location.reload(true)
+                            }}>
+                                <input type="text" placeholder="Name" required
+                                       onChange={event => this.setState({name: event.target.value})}/>
+                                <input type="text" placeholder="Email" required
+                                       onChange={event => this.setState({email: event.target.value})}/>
+                                <input type="text" placeholder="Password" required
+                                       onChange={event => this.setState({password: event.target.value})}/>
+                                <Button className="submitbutton" variant="raised" color="primary" type="submit">
+                                    Submit
+                                </Button>
+                            </form>
+                        </Paper>
+
                     </div>
                 )}
             </Mutation>

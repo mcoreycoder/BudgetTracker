@@ -11,15 +11,17 @@ export default class extends Component {
         exp_amt: 0,
         exp_created: "",
         exp_category: ""
+
     }
     createExpenseMutation = gql`
         mutation createExpense($exp_name: String, $exp_amt: String, $exp_created: String, $exp_category: String) {
-            createExpense(data: {exp_name: $exp_name, exp_amt: $exp_amt, exp_created: $exp_created, exp_category: $exp_category, }) {
+            createExpense(data: {exp_name: $exp_name, exp_amt: $exp_amt, exp_created: $exp_created, exp_category: $exp_category}) {
                 id
                 exp_name
                 exp_amt
                 exp_created
                 exp_category
+                
             }
         }
     `;
